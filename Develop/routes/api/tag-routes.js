@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   // find a single tag by its `id`
-  Tag.findOne({
+  Tag.findByPk(req.params.id, {
     // be sure to include its associated Product data
     include: [
       {
@@ -59,23 +59,24 @@ router.post("/", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
+  console.log(req.params.id);
   // update a tag's name by its `id` value
-  Tag.update({
+  Tag.update(req.body, {
+    attributes: ["tag_name"],
     where: {
       id: req.params.id,
     },
-  })
-    .then((tagData) => {
-      if (!tagData[0]) {
-        res.status(404).json({ message: "There is no tag with this id" });
-        return;
-      }
-      res.json(tagData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  }).then((tagData) => {
+    if (!tagData) {
+      res.status(404).json({ message: "There is no tag with this id" });
+      return;
+    }
+    res.json(tagData);
+  });
+  // .catch((err) => {
+  //   console.log(err);
+  //   res.status(500).json(err);
+  // });
 });
 
 router.delete("/:id", (req, res) => {
