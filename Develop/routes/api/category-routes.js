@@ -50,7 +50,7 @@ router.get("/:id", (req, res) => {
 
 router.post("/", (req, res) => {
   // create a new category
-  Category.Create({
+  Category.create({
     category_name: req.body.category_name,
   })
     .then((catData) => res.json(catData))
@@ -63,6 +63,7 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   // update a category by its `id` value
   Category.update(req.body, {
+    attributes: ["category_name"],
     where: {
       id: req.params.id,
     },
@@ -82,9 +83,9 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   // delete a category by its `id` value
-  Category.destroy(req.body, {
+  Category.destroy({
     where: {
-      id: id.req.params,
+      id: req.params.id,
     },
   })
     .then((catData) => {
