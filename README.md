@@ -2,7 +2,6 @@
 
 ## Contents
 
-[Description](#description)
 
 [User Story](#user-story)
 
@@ -10,7 +9,6 @@
 
 [Installation](#installation)
 
-[Application Screenshot Preview](#application-screenshot-preview)
 
 ### User Story
 
@@ -41,4 +39,8 @@ THEN I am able to successfully create, update, and delete data in my database
 ```md
 npm i
 ```
+## Walkthrough
+https://drive.google.com/file/d/1FrSwmnX41d5WwLNIavDQcDwgA2u-U4sK/view
 
+## Omar Correa
+https://drive.google.com/file/d/1FrSwmnX41d5WwLNIavDQcDwgA2u-U4sK/view
